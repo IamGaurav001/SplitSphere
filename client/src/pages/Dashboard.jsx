@@ -84,7 +84,7 @@ const Dashboard = () => {
     <div className="main-content" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', gap: '24px' }}>
       
       {/* Header section */}
-      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
+      <header className="header-responsive">
         <div>
           <h1 style={{ fontSize: '2.2rem', fontWeight: 900, lineHeight: '1.4' }}>
             Hello, <span style={{ backgroundColor: 'var(--primary)', padding: '2px 10px', border: '2px solid #000', borderRadius: 'var(--radius-sm)', display: 'inline-block' }}>{user.name}</span>
@@ -99,7 +99,7 @@ const Dashboard = () => {
       </header>
 
       {/* Overview Cards */}
-      <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+      <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px, 100%), 1fr))', gap: '24px' }}>
         
         {/* Net Balance */}
         <GlassCard style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -149,7 +149,7 @@ const Dashboard = () => {
 
       {/* Groups List header */}
       <section style={{ marginTop: '0px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+        <div className="header-responsive" style={{ marginBottom: '16px' }}>
           <h3 style={{ fontSize: '1.4rem' }}>Your Expense Groups</h3>
           <button className="btn-primary" onClick={() => setShowCreateModal(true)}>
             <Plus size={16} /> New Group
@@ -172,7 +172,7 @@ const Dashboard = () => {
             </button>
           </GlassCard>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(280px, 100%), 1fr))', gap: '24px' }}>
             {groups.map(group => (
               <GlassCard 
                 key={group.id} 

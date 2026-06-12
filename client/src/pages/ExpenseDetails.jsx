@@ -87,7 +87,7 @@ const ExpenseDetails = () => {
         <Link to={`/group/${expense.group_id}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: 'var(--text-secondary)', textDecoration: 'none', marginBottom: '16px', fontSize: '0.9rem' }}>
           <ArrowLeft size={16} /> Back to Group
         </Link>
-        <h1 style={{ fontSize: '2.2rem', fontWeight: 900, lineHeight: '1.4' }}>
+        <h1 style={{ fontSize: 'clamp(1.6rem, 5vw, 2.2rem)', fontWeight: 900, lineHeight: '1.4' }}>
           <span style={{ backgroundColor: 'var(--primary)', padding: '2px 10px', border: '2px solid #000', borderRadius: 'var(--radius-sm)', display: 'inline-block', transform: 'rotate(-1.5deg)' }}>{expense.description}</span>
         </h1>
         <p style={{ color: 'var(--text-secondary)', marginTop: '4px' }}>
@@ -96,7 +96,7 @@ const ExpenseDetails = () => {
       </div>
 
       {/* Grid: Left - Split breakdown, Right - Chat */}
-      <div style={{ display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '24px' }}>
+      <div className="grid-expense">
         
         {/* Left Column: Splits Breakdown */}
         <GlassCard style={{ height: 'fit-content' }}>
@@ -163,14 +163,7 @@ const ExpenseDetails = () => {
           </div>
 
           {/* Messages list */}
-          <div style={{
-            flex: 1,
-            overflowY: 'auto',
-            padding: '24px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '16px'
-          }}>
+          <div className="chat-messages-container">
             {chatMessages.length === 0 ? (
               <div style={{ margin: 'auto', textAlign: 'center', color: 'hsl(var(--text-muted))' }}>
                 <p style={{ fontSize: '0.9rem' }}>No messages yet. Ask a question or post updates about this bill!</p>
@@ -217,13 +210,7 @@ const ExpenseDetails = () => {
           {/* Message form */}
           <form 
             onSubmit={handleSendMessage}
-            style={{
-              padding: '16px 24px',
-              borderTop: '1px solid hsl(var(--border-muted))',
-              display: 'flex',
-              gap: '12px',
-              backgroundColor: 'hsl(var(--bg-card))'
-            }}
+            className="chat-form-container"
           >
             <input
               type="text"

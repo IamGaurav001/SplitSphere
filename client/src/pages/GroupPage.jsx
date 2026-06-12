@@ -245,14 +245,14 @@ const GroupPage = () => {
         <Link to="/dashboard" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: 'var(--text-secondary)', textDecoration: 'none', marginBottom: '16px', fontSize: '0.9rem' }}>
           <ArrowLeft size={16} /> Back to Dashboard
         </Link>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
+        <div className="header-responsive">
           <div>
             <h1 style={{ fontSize: '2.2rem', fontWeight: 900, lineHeight: '1.4' }}>
               <span style={{ backgroundColor: 'var(--primary)', padding: '2px 10px', border: '2px solid #000', borderRadius: 'var(--radius-sm)', display: 'inline-block', transform: 'rotate(-1.5deg)' }}>{group.name}</span>
             </h1>
             <p style={{ color: 'hsl(var(--text-secondary))', marginTop: '4px' }}>{group.description || 'No description'}</p>
           </div>
-          <div style={{ display: 'flex', gap: '12px' }}>
+          <div style={{ display: 'flex', gap: '12px' }} className="group-actions-responsive">
             <button className="btn-secondary" onClick={() => setShowMemberModal(true)}>
               <UserPlus size={16} /> Add Member
             </button>
@@ -264,7 +264,7 @@ const GroupPage = () => {
       </div>
 
       {/* Main Grid Layout */}
-      <div style={{ display: 'grid', gridTemplateColumns: '7fr 5fr', gap: '24px' }}>
+      <div className="grid-group">
         
         {/* Left Column: Expenses List */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -283,15 +283,7 @@ const GroupPage = () => {
                 <div 
                   key={exp.id}
                   onClick={() => navigate(`/expense/${exp.id}`)}
-                  className="glass-card"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    padding: '20px',
-                    cursor: 'pointer',
-                    animation: 'fadeInUp 0.3s ease forwards'
-                  }}
+                  className="glass-card group-expense-item"
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                     <div style={{

@@ -31,6 +31,67 @@ const Landing = () => {
           min-height: 0;
         }
 
+        .landing-h1 {
+          font-size: clamp(2.5rem, 4.8vw, 5.2rem);
+          font-weight: 900;
+          line-height: 1.05;
+          color: #000000;
+          margin: 0;
+        }
+
+        .landing-badge {
+          background-color: var(--primary);
+          padding: 6px 20px;
+          border: 3px solid #000000;
+          border-radius: var(--radius-sm);
+          display: inline-block;
+          transform: rotate(-1.5deg);
+          margin-top: 16px;
+          box-shadow: 6px 6px 0px #000000;
+        }
+
+        .landing-buttons-container {
+          display: flex;
+          gap: 20px;
+          margin-top: 16px;
+        }
+
+        .landing-mock-card {
+          width: 420px;
+          border: 3px solid #000000;
+          box-shadow: 12px 12px 0px #000000;
+          z-index: 2;
+          position: relative;
+          padding: 36px;
+        }
+
+        .landing-streak-badge {
+          position: absolute;
+          top: calc(50% + 50px);
+          left: calc(50% + 120px);
+          background-color: var(--primary);
+          border: 3px solid #000;
+          border-radius: var(--radius-sm);
+          padding: 14px 24px;
+          box-shadow: 8px 8px 0px #000;
+          z-index: 3;
+          transform: rotate(6deg);
+        }
+
+        .landing-bg-sheet {
+          position: absolute;
+          width: 420px;
+          height: 290px;
+          border: 3px solid #000;
+          background-color: #ffffff;
+          border-radius: var(--radius-md);
+          transform: rotate(-4.5deg);
+          z-index: 1;
+          top: calc(50% - 120px);
+          left: calc(50% - 230px);
+          box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+        }
+
         /* Responsive scaling for smaller screen sizes */
         @media (max-width: 1024px) {
           .landing-container {
@@ -50,27 +111,56 @@ const Landing = () => {
             margin-bottom: 24px;
           }
         }
+
+        @media (max-width: 768px) {
+          .landing-h1 {
+            font-size: clamp(2rem, 8vw, 3.2rem);
+          }
+          .landing-badge {
+            padding: 4px 12px;
+            border-width: 2px;
+            box-shadow: 4px 4px 0px #000000;
+            margin-top: 8px;
+            font-size: 0.9em;
+          }
+          .landing-buttons-container {
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+          }
+          .landing-buttons-container button {
+            width: 100%;
+            padding: 14px 24px !important;
+            font-size: 1.1rem !important;
+          }
+          .landing-mock-card {
+            width: 100%;
+            max-width: 340px;
+            padding: 20px;
+            box-shadow: 6px 6px 0px #000000;
+          }
+          .landing-streak-badge {
+            display: none;
+          }
+          .landing-bg-sheet {
+            display: none;
+          }
+          .mockup-container {
+            width: 100%;
+            min-height: auto;
+          }
+        }
       `}</style>
 
       {/* Navbar */}
-      <nav style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '24px 80px',
-        borderBottom: '2px solid #000000',
-        backgroundColor: 'transparent',
-        zIndex: 100,
-        backdropFilter: 'blur(8px)',
-        WebkitBackdropFilter: 'blur(8px)'
-      }}>
+      <nav className="nav-responsive">
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <span style={{ 
             fontSize: '1.7rem', 
             fontWeight: 900, 
             backgroundColor: 'var(--primary)', 
             padding: '4px 12px', 
-            border: '2px solid #000000', 
+            border: '2px solid #000', 
             borderRadius: 'var(--radius-sm)',
             transform: 'rotate(-1.5deg)',
             display: 'inline-block'
@@ -119,24 +209,9 @@ const Landing = () => {
             💸 AI-Collaborated Bills Manager
           </span>
 
-          <h1 style={{ 
-            fontSize: 'clamp(3.5rem, 4.8vw, 5.2rem)', 
-            fontWeight: 900, 
-            lineHeight: '1.05', 
-            color: '#000000',
-            margin: 0
-          }}>
+          <h1 className="landing-h1">
             Split Bills, <br />
-            <span style={{ 
-              backgroundColor: 'var(--primary)', 
-              padding: '6px 20px', 
-              border: '3px solid #000000', 
-              borderRadius: 'var(--radius-sm)',
-              display: 'inline-block',
-              transform: 'rotate(-1.5deg)',
-              marginTop: '16px',
-              boxShadow: '6px 6px 0px #000000'
-            }}>
+            <span className="landing-badge">
               without friction
             </span>
           </h1>
@@ -152,7 +227,7 @@ const Landing = () => {
             Create groups, share expenses, chat in real-time, and let our simplified path algorithm minimize your peer-to-peer transaction overhead.
           </p>
 
-          <div style={{ display: 'flex', gap: '20px', marginTop: '16px' }}>
+          <div className="landing-buttons-container">
             <button 
               className="btn-primary" 
               style={{ padding: '18px 36px', fontSize: '1.25rem', boxShadow: '6px 6px 0px #000' }} 
@@ -173,14 +248,7 @@ const Landing = () => {
         {/* Right Column: Visual Mockup Cards (Further Enlarged to fill space) */}
         <div className="mockup-container" style={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           {/* Main Mock Card */}
-          <GlassCard style={{ 
-            width: '420px', 
-            border: '3px solid #000000', 
-            boxShadow: '12px 12px 0px #000000',
-            zIndex: 2,
-            position: 'relative',
-            padding: '36px'
-          }}>
+          <GlassCard className="landing-mock-card" style={{ zIndex: 2 }}>
             <span style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               Group: Room 402
             </span>
@@ -210,36 +278,13 @@ const Landing = () => {
           </GlassCard>
 
           {/* Streak Badge Overlay */}
-          <div style={{
-            position: 'absolute',
-            top: 'calc(50% + 50px)',
-            left: 'calc(50% + 120px)',
-            backgroundColor: 'var(--primary)',
-            border: '3px solid #000',
-            borderRadius: 'var(--radius-sm)',
-            padding: '14px 24px',
-            boxShadow: '8px 8px 0px #000',
-            zIndex: 3,
-            transform: 'rotate(6deg)'
-          }}>
+          <div className="landing-streak-badge">
             <span style={{ fontSize: '0.85rem', fontWeight: 900, textTransform: 'uppercase', color: 'var(--text-secondary)', display: 'block', letterSpacing: '0.05em' }}>Streak</span>
             <span style={{ fontSize: '2.4rem', fontWeight: 900 }}>7 🔥</span>
           </div>
 
           {/* Background Sheet Offset */}
-          <div style={{
-            position: 'absolute',
-            width: '420px',
-            height: '290px',
-            border: '3px solid #000',
-            backgroundColor: '#ffffff',
-            borderRadius: 'var(--radius-md)',
-            transform: 'rotate(-4.5deg)',
-            zIndex: 1,
-            top: 'calc(50% - 120px)',
-            left: 'calc(50% - 230px)',
-            boxShadow: '4px 4px 0px rgba(0,0,0,0.1)'
-          }}></div>
+          <div className="landing-bg-sheet"></div>
         </div>
 
       </main>
