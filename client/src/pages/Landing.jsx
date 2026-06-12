@@ -79,14 +79,6 @@ const Landing = () => {
           </span>
         </div>
 
-        <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
-          <span style={{ color: 'var(--text-muted)', fontWeight: 800, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-            Product
-          </span>
-          <span style={{ color: 'var(--text-muted)', fontWeight: 800, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-            v1.0.0 Stable
-          </span>
-        </div>
 
         <div style={{ display: 'flex', gap: '12px' }}>
           {user ? (
