@@ -92,4 +92,4 @@ node tests/balances.test.js
 ---
 
 ## AI Collaboration Context
-This project was co-engineered with **Antigravity**, a Google DeepMind agent, using the specifications established in [AI_CONTEXT.md](./AI_CONTEXT.md) and [BUILD_PLAN.md](./BUILD_PLAN.md).
+This project was co-engineered with **Antigravity** (a Google DeepMind agent) and **GitHub Copilot**, using the specifications established in [AI_CONTEXT.md](./AI_CONTEXT.md) and [BUILD_PLAN.md](./BUILD_PLAN.md).
